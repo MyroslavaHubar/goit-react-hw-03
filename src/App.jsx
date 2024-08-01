@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Section from "./components/Section/Section";
 import ContactList from "./components/ContactList/ContactList";
+import SearchBox from "./components/SearchBox/SearchBox";
 
 function App() {
   const contacts = [
@@ -11,11 +12,18 @@ function App() {
     { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
   ];
 
+  const [filterValue, setFilterValue] = useState("");
+
+  const contactsFilter = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
   return (
     <>
       <Section>
         <h1>Phonebook</h1>
-        <ContactList contacts={contacts} />
+        <SearchBox setFilterValue={setFilterValue} />
+        <ContactList contacts={contactsFilter} />
       </Section>
     </>
   );
