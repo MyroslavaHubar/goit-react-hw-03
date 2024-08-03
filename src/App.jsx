@@ -23,13 +23,17 @@ function App() {
     setContacts([...contacts, newContact]);
   }
 
+  function deleteContact(contactId) {
+    setContacts(contacts.filter((contact) => contact.id !== contactId));
+  }
+
   return (
     <>
       <Section>
         <h1 className="title">Phonebook</h1>
         <ContactForm onAdd={addContact} />
         <SearchBox setFilterValue={setFilterValue} />
-        <ContactList contacts={contactsFilter} />
+        <ContactList contacts={contactsFilter} onDelete={deleteContact} />
       </Section>
     </>
   );
