@@ -26,7 +26,6 @@
 }
 
 .contactBtnDelete {
-  height: 25px;
+  padding: 5px;
   min-width: 80px;
-  box-shadow: #575656b8;
 }

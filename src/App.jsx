@@ -3,6 +3,7 @@ import "./App.css";
 import Section from "./components/Section/Section";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBox from "./components/SearchBox/SearchBox";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 function App() {
   const [contacts, setContacts] = useState([
@@ -18,10 +19,15 @@ function App() {
     contact.name.toLowerCase().includes(filterValue.toLowerCase())
   );
 
+  function addContact(newContact) {
+    setContacts([...contacts, newContact]);
+  }
+
   return (
     <>
       <Section>
-        <h1>Phonebook</h1>
+        <h1 className="title">Phonebook</h1>
+        <ContactForm onAdd={addContact} />
         <SearchBox setFilterValue={setFilterValue} />
         <ContactList contacts={contactsFilter} />
       </Section>
